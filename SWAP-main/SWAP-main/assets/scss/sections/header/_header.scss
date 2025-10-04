@@ -1,0 +1,272 @@
+.header-section {
+  padding: 25px 0px;
+  position: absolute;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  z-index: 111;
+
+  &.v10 {
+    padding-top: 13px;
+  }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    li a {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+
+      img {
+        width: 20px;
+        transition: 0.3s;
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 40%;
+
+  &.v2,
+  &.v3,
+  &.v4,
+  &.v6,
+  &.v8,
+  &.v9 {
+    width: 70%;
+  }
+
+  .header-link {
+    line-height: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    &:hover {
+      color: color(whiteColor);
+    }
+  }
+}
+
+.connect-wallet-btn {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 12px 24px;
+  line-height: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .short-address {
+    display: none;
+  }
+
+  img {
+    max-width: fit-content;
+  }
+
+  &.v3 {
+    color: #111;
+    background: #07e6f5;
+    img {
+      filter: brightness(0);
+    }
+  }
+
+  &.v4 {
+    color: #111;
+    background: #fcd930;
+    img {
+      filter: brightness(0);
+    }
+  }
+
+  &.v5 {
+    color: #111;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #1dff96 0%, #bcff7b 100%);
+    img {
+      filter: brightness(0);
+    }
+  }
+
+  &.v6 {
+    color: #111;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #1dff96 0%, #bcff7b 100%);
+    img {
+      filter: brightness(0);
+    }
+  }
+
+  &.v8 {
+    color: #fff;
+    background: linear-gradient(90deg, #3c38ff 0%, #7838ff 100%);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.header-center {
+  width: 20%;
+  margin: auto;
+  text-align: center;
+}
+
+.header-left {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.menu-btn {
+  position: relative;
+
+  &.v7 {
+    .demo-btn {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: none;
+      border-radius: 0;
+    }
+  }
+
+  &:hover {
+    .demo-list {
+      visibility: visible;
+      opacity: 1;
+      transform: scale(1) translateY(0px);
+    }
+  }
+}
+
+.demo-btn {
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(7.5px);
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  img {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+.demo-list {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0px;
+  width: 170px;
+  border-radius: 10px;
+  background: #1d1f2b;
+  padding: 10px 0;
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.75) translateY(-21px);
+
+  li a {
+    font-size: 16px;
+    width: 100%;
+    background: transparent;
+    padding: 4px 20px;
+    display: flex;
+    transition: 0.3s;
+
+    &:hover,
+    &.active {
+      color: #65ea88;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .header-inner {
+    .social-links {
+      display: none;
+    }
+  }
+
+  .header-link {
+    display: none;
+  }
+
+  .header-left {
+    display: none;
+  }
+
+  .header-center {
+    margin: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .menu-btn {
+    &.v7 {
+      display: none;
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .connect-wallet-btn {
+    padding: 10px 20px;
+
+    span {
+      display: none;
+    }
+    .short-address {
+      display: block;
+    }
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .header-inner {
+    .logo {
+      max-width: 100px;
+    }
+  }
+
+  .menu-btn {
+    display: none;
+  }
+}

@@ -1,0 +1,261 @@
+.banner5-section {
+  background: url("../images/bg/banner5-bg.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  padding: 223px 0 0px 0;
+  position: relative;
+  z-index: 0;
+  overflow-x: hidden;
+}
+
+.banner5-content {
+  max-width: 742px;
+  margin: auto;
+  position: relative;
+  z-index: 2;
+
+  h1 {
+    color: #fff;
+    font-family: "Bebas Neue";
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 90px;
+    /* 100% */
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+.card-progress-section {
+  &.v5 {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+
+    h5 {
+      span {
+        margin-bottom: 0;
+      }
+    }
+
+    .card-progress-bar {
+      height: 24px;
+      border-radius: 14px;
+    }
+
+    .card-progress-inner {
+      height: 24px;
+      border-radius: 14px;
+    }
+  }
+}
+
+.banner5-content-inner {
+  max-width: 670px;
+  margin: auto;
+}
+
+.banner5-timer {
+  h6 {
+    text-transform: uppercase;
+    font-size: 18px;
+  }
+}
+
+.timer-v5 {
+  li {
+    color: #fff;
+    font-family: "Bebas Neue";
+    font-size: 50px;
+    font-weight: 400;
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0.2) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+
+    span {
+      font-size: 50px;
+      font-weight: 400;
+    }
+
+    &::after {
+      color: rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+.buy-btn {
+  margin-top: 3%;
+
+  &.v5 {
+    color: #111;
+    font-family: Outfit;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 162.5%;
+    text-transform: uppercase;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #1dff96 0%, #bcff7b 100%);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+  }
+}
+
+.banner-bottom-wrapper {
+  padding: 70px 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    position: absolute;
+    z-index: -1;
+    content: "";
+    top: 70px;
+    left: -10px;
+    width: 110%;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(4deg);
+  }
+
+  .banner-bottom-scrollar {
+    background: linear-gradient(90deg, #1dff96 0%, #bcff7b 100%);
+    backdrop-filter: blur(10px);
+    width: 110%;
+    height: 80px;
+    position: relative;
+    z-index: 1;
+    transform: rotate(-4deg);
+    right: 10px;
+    top: 0px;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 27px;
+      overflow: hidden;
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 27px;
+        margin: 0;
+        list-style: none;
+        padding: 0;
+        animation: smoothSlider 25s infinite linear;
+
+        li {
+          color: #111;
+          font-family: "Bebas Neue";
+          font-size: 60px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 150%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 27px;
+          min-width: max-content;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .banner5-content {
+    h1 {
+      font-size: 70px;
+    }
+  }
+
+  .banner-bottom-shape {
+    &.v5 {
+      height: 55px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .banner5-content {
+    h1 {
+      font-size: 60px;
+      line-height: 120%;
+    }
+  }
+
+  .banner-bottom-wrapper {
+    padding: 60px 0;
+
+    &::before {
+      height: 40px;
+    }
+
+    .banner-bottom-scrollar {
+      height: 40px;
+
+      &-inner {
+        gap: 20px;
+
+        ul {
+          gap: 20px;
+          animation: smoothSlider 25s infinite linear;
+
+          li {
+            font-size: 25px;
+            gap: 20px;
+
+            img {
+              width: 25px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 575px) {
+  .banner5-section {
+    padding: 120px 0 0px 0;
+  }
+  
+  .banner5-content {
+    h1 {
+      font-size: 40px;
+    }
+  }
+  .timer-v5 {
+    li {
+      font-size: 36px;
+      span {
+        font-size: 36px;
+      }
+    }
+  }
+  .card-progress-section {
+    &.v5 {
+      h5 {
+        margin-bottom: 20px;
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+}

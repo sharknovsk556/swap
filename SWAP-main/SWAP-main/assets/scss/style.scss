@@ -1,0 +1,61 @@
+@charset "UTF-8";
+/*------------------------------------------------------------------------------------
+Theme Name: Gittu
+Author: uigigs
+Author URL: https://themeforest.net/user/uigigs/portfolio
+version: 1.0.0
+------------------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------------------
+CSS table of content
+
+01. Settings style
+02. Base style
+03. Component Style
+04. Header style
+05. Banner Style
+06. Footer Section
+
+------------------------------------------------------------------------------------*/
+
+/*--------------------------------
+01. Settings style
+--------------------------------*/ 
+@import './settings/variables';
+
+/*--------------------------------
+02. Base style
+--------------------------------*/
+@import './helper/reset.all'; 
+@import './helper/helper.theme';
+
+/*--------------------------------
+03. Component Style
+--------------------------------*/
+@import './components/modal';
+@import './components/timer';
+
+/*--------------------------------
+04. Header style
+--------------------------------*/
+@import './sections/header/header';
+@import './sections/header/mobile-menu';
+
+/*--------------------------------
+05. Banner Style
+--------------------------------*/
+@import './sections/banner/index1';
+@import './sections/banner/index2';
+@import './sections/banner/index3';
+@import './sections/banner/index4';
+@import './sections/banner/index5';
+@import './sections/banner/index6';
+@import './sections/banner/index7';
+@import './sections/banner/index8';
+@import './sections/banner/index9';
+@import './sections/banner/index10';
+@import './sections/banner/index3';
+
+/*--------------------------------
+06. Footer Section
+--------------------------------*/
+@import './sections/footer/footer';

@@ -1,0 +1,295 @@
+/*-- reset style start --*/
+:root {
+  --percent: 20; //default percent
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::selection {
+  background-color: #65ea88;
+  color: #111111;
+}
+
+body {
+  font-family: fontfamily(outfit);
+  @include textStyle(15px, 400, 200%);
+  color: color(whiteColor);
+  background: #0b0c12;
+  overflow-x: hidden;
+}
+
+.outfit {
+  font-family: fontfamily(outfit) !important;
+}
+.orbitron {
+  font-family: fontfamily(orbitron) !important;
+}
+.inter {
+  font-family: fontfamily(inter) !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: 0;
+  color: color(whiteColor);
+}
+h1 {
+  @include textStyle(60px, 600, 80px);
+}
+h2 {
+  font-size: 40px;
+  line-height: 138%;
+}
+h3 {
+  @include textStyle(24px, 600, 36px);
+}
+h4 {
+  @include textStyle(20px, 600, 32px);
+}
+h5 {
+  @include textStyle(18px, 700, 23.44px);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wt-400 {
+  font-weight: 400;
+}
+.wt-500 {
+  font-weight: 500;
+}
+.wt-600 {
+  font-weight: 600;
+}
+.wt-700 {
+  font-weight: 700;
+}
+.text-18 {
+  font-size: 18px;
+}
+
+.break-word {
+  word-break: break-all;
+}
+
+.row-gap50 {
+  row-gap: 50px;
+}
+.text-right {
+  text-align: right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+
+a,
+.btn,
+button {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+    outline: none;
+    border: none;
+  }
+}
+
+*:focus {
+  outline: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+button {
+  border-radius: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.btn {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+
+.custom-ul,
+.custom-ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+}
+.flex {
+  display: flex;
+}
+.align-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.text-transform-none {
+  text-transform: none;
+}
+.text-white {
+  color: color(whiteColor);
+}
+.text-green {
+  color: color(themeGreen);
+}
+.color-primary {
+  color: color(primary);
+}
+
+/*-- custom bootstrap style start --*/
+@media (min-width: 1400px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1190px;
+  }
+  .container-custom {
+    max-width: 1290px;
+  }
+}
+/*-- custom bootstrap style end --*/
+
+/*-- color style --*/
+// .color-theme {
+//     color: color(primary) !important;
+// }
+/*-- bg color style start --*/
+.bg-primay {
+  background: color(primary);
+}
+/*-- bg color style end --*/
+
+/*-- Lib custom Start --*/
+.row {
+  margin: 0px -15px !important;
+}
+.col-xxl-1,
+.col-xxl-2,
+.col-xxl-3,
+.col-xxl-4,
+.col-xxl-5,
+.col-xxl-6,
+.col-xxl-7,
+.col-xxl-8,
+.col-xxl-9,
+.col-xxl-10,
+.col-xxl-11,
+.col-xxl-12,
+.col-xl-1,
+.col-xl-2,
+.col-xl-3,
+.col-xl-4,
+.col-xl-5,
+.col-xl-6,
+.col-xl-7,
+.col-xl-8,
+.col-xl-9,
+.col-xl-10,
+.col-xl-11,
+.col-xl-12,
+.col-lg-1,
+.col-lg-2,
+.col-lg-3,
+.col-lg-4,
+.col-lg-5,
+.col-lg-6,
+.col-lg-7,
+.col-lg-8,
+.col-lg-9,
+.col-lg-10,
+.col-lg-11,
+.col-lg-12,
+.col-md-1,
+.col-md-2,
+.col-md-3,
+.col-md-4,
+.col-md-5,
+.col-md-6,
+.col-md-7,
+.col-md-8,
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  padding: 0px 15px !important;
+}
+/*-- Lib custom End --*/
+
+@media only screen and (max-width: 1199px) {
+  h5 {
+    font-size: 16px;
+  }
+}
+
+/*-- reset style end --*/

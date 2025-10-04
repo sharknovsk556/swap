@@ -1,0 +1,258 @@
+.banner1-section {
+  background: #0b0c12;
+  min-height: 100vh;
+  padding: 168px 0 40px 0;
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/bg/mesh-grad-1.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
+
+  &::after {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/bg/mesh-grad-2.png");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+  }
+}
+
+.banner1-content {
+  h5 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 167%;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .banner1-timer{
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    max-width: 978px;
+    margin: auto;
+    margin-bottom: 23px;
+    @include textStyle(60px, 600, 80px);
+  }
+
+  .price-text {
+    text-align: center;
+    margin-bottom: 31px;
+  }
+
+  .banner1-btn {
+    max-width: 270px;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(90deg, #ffc527 0%, #ffb209 100%);
+    border-radius: 50px;
+    position: relative;
+    z-index: 4;
+  }
+}
+
+.progress-section {
+  max-width: 770px;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 1.5%;
+  margin-top: 2%;
+
+  .progress-top-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      margin-bottom: 11px;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 30px;
+      text-transform: uppercase;
+      color: #ffffff;
+    }
+  }
+
+  .progress-bar-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px dashed rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 8px;
+
+    .progress-bar-inner {
+      background: #4250f4;
+      border-radius: 12px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      width: 23%;
+
+      span {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 125%;
+        text-align: right;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.banner1-social {
+  position: relative;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  margin: auto;
+  padding-top: 4%;
+  padding-bottom: 2%;
+  z-index: 3;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+    list-style: none;
+    max-width: 520px;
+    margin: auto;
+
+    li {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+.input-section {
+  .input-dwopdown {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0;
+    height: 60px;
+    margin-bottom: 30px;
+
+    input {
+      border: none;
+      outline: none;
+      width: 65%;
+      background: transparent;
+      margin-bottom: 0;
+    }
+
+    .token-dropdown {
+      width: 160px;
+      border: none;
+      outline: none;
+      position: relative;
+      border-left: 2px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0px 10px 10px 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .banner1-content {
+    h2 {
+      font-size: 55px;
+      max-width: 660px;
+      margin: auto;
+      margin-bottom: 23px;
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+}
+
+@media only screen and (max-width: 768px) {
+  .progress-section {
+    &.v1 {
+      .progress-top-text {
+        gap: 15px;
+        row-gap: 0;
+      }
+    }
+  }
+
+  .banner1-social {
+    bottom: 20px;
+  }
+
+  .banner1-content {
+    h2 {
+      font-size: 40px;
+      line-height: 150%;
+    }
+  }
+}
+
+@media only screen and (max-width: 575px) {
+
+  .banner1-section {
+    padding: 120px 0 40px 0;
+  }
+
+  .banner1-content {
+    h2 {
+      font-size: 24px;
+    }
+
+    h5 {
+      margin-bottom: 20px;
+    }
+
+    .price-text {
+      margin-top: 20px;
+    }
+  }
+
+  .progress-section {
+    .progress-top-text {
+      flex-wrap: wrap;
+    }
+  }
+
+  .banner1-social {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 0px;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .banner1-social ul li {
+    height: 36px;
+    padding: 10px;
+    width: 36px;
+  }
+}

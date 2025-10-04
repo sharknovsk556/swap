@@ -1,0 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="og:title" content="Nakamoto Capital Gov" />
+  <meta property="og:description" content="Information about NKTx Governance token of Nakamoto Capital" />
+  <meta property="og:image" content="assets/images/Banner.jpg" />
+  <title>NKTx Token - Advanced DeFi Platform</title>
+  <link rel="icon" href="assets/images/logo/favicon.ico" />
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-color: #ffd700;
+      --secondary-color: #ffed4e;
+      --accent-color: #ffc527;
+      --success-color: #ffd700;
+      --warning-color: #ffed4e;
+      --background-dark: #0d0d0d;
+      --background-card: #1a1a1a;
+      --text-primary: #ffffff;
+      --text-secondary: #e0e0e0;
+      --text-muted: #b8b8b8;
+      --border-color: rgba(255, 215, 0, 0.4);
+      --gradient-primary: linear-gradient(135deg, #ffd700, #ffed4e);
+      --gradient-secondary: linear-gradient(135deg, #ffc527, #ffd700);
+      --gradient-accent: linear-gradient(135deg, #ffed4e, #ffc527);
+      --shadow-glow: 0 0 24px rgba(255, 215, 0, 0.4);
+      --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.7);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0d0d0d 0%, #151515 50%, #1a1a1a 100%);
+      color: var(--text-primary);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 237, 78, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(255, 197, 39, 0.05) 0%, transparent 50%);
+      animation: backgroundShift 20s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes backgroundShift {
+      0%, 100% { transform: scale(1) rotate(0deg); }
+      50% { transform: scale(1.05) rotate(180deg); }
+    }
+
+    /* Enhanced Navigation */
+    .site-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10000;
+      backdrop-filter: blur(20px) saturate(180%);
+      background: rgba(13, 13, 13, 0.9);
+      border-bottom: 1px solid var(--border-color);
+      transition: var(--transition);
+    }
+
+    .site-nav.scrolled {
+      background: rgba(13, 13, 13, 0.95);
+      box-shadow: var(--shadow-card);
+    }
+
+    .site-nav .nav-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 20px;
+      transition: var(--transition);
+    }
+
+    .brand:hover {
+      transform: translateY(-2px);
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      display: block;
+      object-fit: contain;
+      box-shadow: var(--shadow-glow);
+      transition: var(--transition);
+    }
+
+    .brand:hover .brand-mark {
+      transform: rotate(5deg) scale(1.05);
+    }
+
+    .nav-items {
+      display: none;
+      gap: 8px;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .nav-items { display: flex; }
+    }
+
+    .nav-button {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid transparent;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: left 0.5s ease;
+      z-index: -1;
+    }
+
+    .nav-button:hover::before {
+      left: 0;
+    }
+
+    .nav-button:hover {
+      color: #000;
+      transform: translateY(-2px);
+    }
+
+    .nav-button.active {
+      background: var(--gradient-primary);
+      color: #000;
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-2px);
+    }
+
+    .wallet-btn {
+      background: var(--gradient-primary);
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wallet-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .wallet-btn:hover::before {
+      left: 100%;
+    }
+
+    .wallet-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .wallet-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Enhanced Stats Cards */
+    .gradient-card {
+      background: rgba(21, 21, 21, 0.9);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gradient-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .gradient-card:hover::before {
+      left: 100%;
+    }
+
+    .gradient-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: var(--primary-color);
+      box-shadow: var(--shadow-card);
+    }
+
+    .border-card-border { border-color: var(--border-color) !important; }
+    .transition-smooth { transition: var(--transition); }
+    .text-success { color: var(--success-color); }
+    .text-destructive { color: var(--accent-color); }
+    .text-muted-foreground { color: var(--text-muted); }
+    .text-foreground { color: var(--text-primary); }
+    .bg-warning\/10 { background-color: rgba(255, 215, 0, 0.1); }
+    .border-warning\/20 { border-color: var(--border-color) !important; }
+    .bg-input\/50 { background-color: rgba(21, 21, 21, 0.8); }
+    .border-border { border-color: var(--border-color) !important; }
+    .bg-secondary { background-color: rgba(255, 215, 0, 0.2); }
+    .gradient-primary { background: var(--gradient-primary); }
+    .glow-primary { box-shadow: var(--shadow-glow); }
+    .bg-success { background-color: var(--success-color); }
+    .text-success-foreground { color: #000; }
+    .glow-success { box-shadow: 0 0 24px rgba(29, 255, 150, 0.5); }
+    .transition-spring { transition: var(--transition); }
+
+    /* Tab styles */
+    .tab-content {
+      width: 100%;
+    }
+
+    /* Layout Presentation Styles */
+    .hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 30% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(53, 208, 224, 0.1) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .hero-btn {
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+    }
+
+    .hero-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .hero-btn:hover::before {
+      left: 100%;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-btn.primary:hover {
+      box-shadow: var(--shadow-glow);
+    }
+
+    .hero-btn.secondary:hover {
+      border-color: var(--primary-color);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    .feature-card {
+      position: relative;
+      transform: translateY(0);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-icon {
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .stat-item {
+      position: relative;
+      transform: translateY(0);
+    }
+
+    .stat-item:hover {
+      transform: translateY(-4px);
+    }
+
+    .stat-number {
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .stat-item:hover .stat-number {
+      transform: scale(1.05);
+    }
+
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(53, 208, 224, 0.05) 0%, transparent 50%);
+      z-index: -1;
+    }
+
+    .cta-btn {
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .cta-btn:hover::before {
+      left: 100%;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .cta-btn.primary:hover {
+      box-shadow: var(--shadow-glow);
+    }
+
+    .cta-btn.secondary:hover {
+      border-color: var(--primary-color);
+      background: rgba(255, 215, 0, 0.1);
+    }
+
+    /* Responsive adjustments for layout */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 18px !important;
+      }
+      
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .hero-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+      }
+      
+      .stat-number {
+        font-size: 36px !important;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .cta-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .hero-title {
+        font-size: 28px !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 16px !important;
+      }
+    }
+
+    /* 3D Crypto Animation Styles */
+    @keyframes rotate3d {
+      0% {
+        transform: rotateY(0deg) rotateX(10deg);
+      }
+      25% {
+        transform: rotateY(90deg) rotateX(10deg);
+      }
+      50% {
+        transform: rotateY(180deg) rotateX(10deg);
+      }
+      75% {
+        transform: rotateY(270deg) rotateX(10deg);
+      }
+      100% {
+        transform: rotateY(360deg) rotateX(10deg);
+      }
+    }
+
+    @keyframes float1 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.7;
+      }
+      25% {
+        transform: translateY(-20px) translateX(10px) scale(1.1);
+        opacity: 1;
+      }
+      50% {
+        transform: translateY(-10px) translateX(-5px) scale(0.9);
+        opacity: 0.8;
+      }
+      75% {
+        transform: translateY(-15px) translateX(8px) scale(1.05);
+        opacity: 0.9;
+      }
+    }
+
+    @keyframes float2 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.6;
+      }
+      33% {
+        transform: translateY(-15px) translateX(-8px) scale(1.2);
+        opacity: 1;
+      }
+      66% {
+        transform: translateY(-8px) translateX(12px) scale(0.8);
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes float3 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.8;
+      }
+      20% {
+        transform: translateY(-25px) translateX(-10px) scale(1.3);
+        opacity: 1;
+      }
+      40% {
+        transform: translateY(-12px) translateX(15px) scale(0.7);
+        opacity: 0.6;
+      }
+      60% {
+        transform: translateY(-18px) translateX(-5px) scale(1.1);
+        opacity: 0.9;
+      }
+      80% {
+        transform: translateY(-6px) translateX(8px) scale(0.9);
+        opacity: 0.7;
+      }
+    }
+
+    @keyframes float4 {
+      0%, 100% {
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translateY(-12px) translateX(6px) scale(1.4);
+        opacity: 1;
+      }
+    }
+
+    .crypto-3d-container {
+      transition: var(--transition);
+    }
+
+    .crypto-3d-container:hover .crypto-3d-coin {
+      animation-duration: 4s;
+      transform: scale(1.1);
+    }
+
+    .crypto-3d-container:hover .particle {
+      animation-duration: 1.5s;
+    }
+
+    .coin-face {
+      transition: var(--transition);
+    }
+
+    .coin-face:hover {
+      transform: scale(1.05);
+    }
+
+    .particle {
+      transition: var(--transition);
+    }
+
+    .particle:hover {
+      transform: scale(1.5);
+      opacity: 1;
+    }
+
+    /* Responsive adjustments for 3D animation */
+    @media (max-width: 1024px) {
+      .crypto-3d-container {
+        width: 150px !important;
+        height: 150px !important;
+        right: 3% !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .crypto-3d-container {
+        position: relative !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 120px !important;
+        height: 120px !important;
+        margin: 0 auto 40px !important;
+      }
+      
+      .hero-content {
+        margin-top: 0 !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .crypto-3d-container {
+        width: 100px !important;
+        height: 100px !important;
+      }
+      
+      .coin-face img {
+        width: 70% !important;
+        height: 70% !important;
+      }
+      
+      .coin-face.back div {
+        font-size: 18px !important;
+      }
+    }
+
+    /* Token dropdown styles */
+    .token-option:hover {
+      background-color: rgba(255, 215, 0, 0.2);
+    }
+
+    .token-option.selected {
+      background-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .warning-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50px;
+      background: var(--gradient-primary);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 10001;
+      animation: slideDown 0.5s ease-out;
+      box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); }
+      to { transform: translateY(0); }
+    }
+
+    .warning-banner a {
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: var(--transition);
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .warning-banner a:hover {
+      background: rgba(0, 0, 0, 0.2);
+      transform: scale(1.05);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 120px 24px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .token-card {
+      flex: 0 0 65%;
+      min-width: 300px;
+      background: rgba(21, 21, 21, 0.95);
+      backdrop-filter: blur(20px);
+      padding: 32px;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-card);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .token-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+    }
+
+    .token-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    }
+
+    .swap-card {
+      flex: 0 0 32%;
+      padding: 0;
+    }
+
+    .token-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .token-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .token-logo {
+      width: 92px;
+      height: 92px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .token-texts {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .token-title {
+      font-size: 14px;
+      color: #ffd700;
+      font-weight: 400;
+    }
+
+    .token-price {
+      font-size: 26px;
+      font-weight: 400;
+      color: #ffd700;
+    }
+
+    .link-copy {
+      display: none;
+    }
+
+    .token-chart iframe {
+      width: 100%;
+      height: 336px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .graph-note {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #ffffff;
+    }
+
+    .info-group {
+      margin-top: 28px;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+      font-size: 14.5px;
+    }
+
+    .info-label {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .info-value {
+      color: var(--text-primary);
+      font-weight: 400;
+    }
+
+    .swap-card iframe {
+      width: 100%;
+      height: 446px;
+      border: none;
+      border-radius: 12px;
+    }
+
+    .solscan-button,
+    .whitepaper-button {
+      background: linear-gradient(to right, #ffd700, #ffed4e);
+      color: black;
+      border: none;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 14px;
+      cursor: pointer;
+      align-self: center;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin: 48px 0 24px;
+      font-size: 13px;
+      color: #ffd700;
+    }
+
+    .footer-links {
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .footer-links a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+
+    @media (max-width: 1024px) {
+      .token-card {
+        flex: 0 0 100%;
+      }
+      
+      .swap-card {
+        flex: 0 0 100%;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        padding: 0 16px;
+      }
+
+      .token-chart iframe {
+        height: 400px;
+      }
+
+      .swap-card iframe {
+        height: 660px;
+      }
+
+      .token-card,
+      .swap-card {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="warning-banner" id="warningBanner">
+    🎉 We're airdropping NFT packs for NKTx holders!
+    <a href="https://nft.nakamotocapital.fund/" target="_blank">Check out the official site</a>
+    <button class="close-btn" onclick="document.getElementById('warningBanner').style.display='none'">✕</button>
+  </div>
+  
+  <style>
+  .warning-banner {
+    position: relative;         /* Para posicionar o botão dentro */
+    background: #fae101;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid #f0c040;
+    border-radius: 6px;
+    font-family: sans-serif;
+  }
+  
+  /* Botão X */
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .close-btn:hover {
+    color: #000;
+  }
+  </style>
+  
+  <nav class="site-nav" id="siteNav">
+    <div class="nav-inner">
+      <a class="brand" href="#">
+        <img src="assets/images/icon/apple-touch-icon.png" alt="Nakamoto Capital" class="brand-mark">
+        <span>Nakamoto Capital</span>
+      </a>
+      <div class="nav-items">
+        <button class="nav-button active" onclick="showTab('layout')">ABOUT</button>
+        <script src="redirect.js"></script>
+        <button class="nav-button active" onclick="showTab('home')"> Home</button>
+        <button class="nav-button" onclick="showTab('swap')"><img src="assets/images/nktx.png" alt="NKTX" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;"> Swap</button>
+        <button class="nav-button" onclick="showTab('uncb')"><img src="../public/assets/images/ccoin_2.png" alt="UNCB" style="width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;"> $UNCB</button>
+      </div>
+      <button class="wallet-btn connect-wallet-btn">💼 Connect Wallet</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Home Tab -->
+    <div id="home-tab" class="tab-content">
+    <section class="stats-section" style="width:100%; display:grid; grid-template-columns: repeat( auto-fit, minmax(280px, 1fr) ); gap:24px; margin-top: 20px;">
+      <div class="gradient-card border-card-border transition-smooth" style="padding:24px; position: relative;">
+        <div class="stat-icon" style="position: absolute; top: 20px; right: 20px; font-size: 24px; opacity: 0.3;">💰</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p class="text-muted-foreground" style="font-size:13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">TVL Nakamoto Capital</p>
+          <div style="display:flex; align-items:baseline; gap:12px;">
+            <p class="text-foreground" style="font-size:28px; font-weight:800; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$1,240,500</p>
+            <span class="text-success" style="font-size:14px; font-weight:700; padding: 4px 8px; background: rgba(29, 255, 150, 0.2); border-radius: 6px;">+2.4%</span>
+          </div>
+          <p class="text-muted-foreground" style="font-size:12px; line-height: 1.4;">Total value locked in Nakamoto Capital pools</p>
+        </div>
+      </div>
+
+      <div class="gradient-card border-card-border transition-smooth" style="padding:24px; position: relative;">
+        <div class="stat-icon" style="position: absolute; top: 20px; right: 20px; font-size: 24px; opacity: 0.3;">📊</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p class="text-muted-foreground" style="font-size:13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">24h Volume</p>
+          <div style="display:flex; align-items:baseline; gap:12px;">
+            <p class="text-foreground" style="font-size:28px; font-weight:800; background: var(--gradient-secondary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$356,212</p>
+            <span class="text-destructive" style="font-size:14px; font-weight:700; padding: 4px 8px; background: rgba(255, 107, 107, 0.2); border-radius: 6px;">-1.1%</span>
+          </div>
+          <p class="text-muted-foreground" style="font-size:12px; line-height: 1.4;">24h volume Nakamoto Capital</p>
+        </div>
+      </div>
+
+      <div class="gradient-card border-card-border transition-smooth" style="padding:24px; position: relative;">
+        <div class="stat-icon" style="position: absolute; top: 20px; right: 20px; font-size: 24px; opacity: 0.3;">👥</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <p class="text-muted-foreground" style="font-size:13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px;">Active Users</p>
+          <div style="display:flex; align-items:baseline; gap:12px;">
+            <p class="text-foreground" style="font-size:28px; font-weight:800; background: var(--gradient-accent); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">700</p>
+            <span class="text-muted-foreground" style="font-size:14px; font-weight:700; padding: 4px 8px; background: rgba(184, 184, 184, 0.2); border-radius: 6px;">~</span>
+          </div>
+          <p class="text-muted-foreground" style="font-size:12px; line-height: 1.4;">Users interacting in the last 24 hours</p>
+        </div>
+      </div>
+    </section>
+    <div class="token-card">
+      <div class="token-header">
+        <div class="token-title-group">
+          <div class="token-logo-container" style="position: relative;">
+            <img src="assets/images/nktx.png" class="token-logo" alt="NKTx Logo">
+          </div>
+          <div class="token-texts">
+            <div class="token-title" style="font-size: 18px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Nakamoto Capital Gov</div>
+            <div class="token-price" id="token-price" style="font-size: 32px; font-weight: 800; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Loading...</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a class="solscan-button" href="https://solscan.io/token/nktxHBwMUTBPJJtr8Z8mcbS4m6zCeEDVuDRHfMAWmWB" target="_blank" style="display: flex; align-items: center; gap: 6px;">
+            🔍 Solscan
+          </a>
+          <a class="whitepaper-button" href="https://whitepaper.nakamotocapital.fund/" target="_blank" style="display: flex; align-items: center; gap: 6px;">
+            📄 Whitepaper
+          </a>
+        </div>
+      </div>
+
+      <div class="token-chart">
+        <iframe src="https://birdeye.so/tv-widget/nktxHBwMUTBPJJtr8Z8mcbS4m6zCeEDVuDRHfMAWmWB?chain=solana&viewMode=pair&chartInterval=15&chartType=Line&chartTimezone=America%2FLos_Angeles&chartLeftToolbar=show&theme=dark&cssCustomProperties=--tv-color-platform-background%3A%230b1022&cssCustomProperties=--tv-color-pane-background%3A%230b1022&chartOverrides=mainSeriesProperties.lineStyle.color%3A%23ffd700&chartOverrides=paneProperties.backgroundGradientStartColor%3Argba%2811%2C+16%2C+34%2C+1%29&chartOverrides=paneProperties.backgroundGradientEndColor%3Argba%2811%2C+16%2C+34%2C+1%29" allowfullscreen></iframe>
+        <div class="graph-note">"The launch of the coin was too successful — we hit $0.50 and many dumped, crashing the price early. That’s why the chart looks like that."</div>
+      </div>
+
+      <div class="info-group">
+        <div class="info-row">
+          <div class="info-label">CA</div>
+          <div class="info-value">nktx***mWB</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Total Supply</div>
+          <div class="info-value">10,000,000</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Protocol</div>
+          <div class="info-value">Solana SPL</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Mint Auth</div>
+          <div class="info-value">YES</div>
+        </div>
+        <div class="info-row">
+          <div class="info-label">Locked LP</div>
+          <div class="info-value">0%</div>
+        </div>
+      </div>
+    </div>
+
+    
+    </div>
+
+    <!-- Layout Tab -->
+    <div id="layout-tab" class="tab-content" style="display: none;">
+      <!-- Hero Section -->
+      <section class="hero-section" style="text-align: center; padding: 60px 0; margin-bottom: 60px; position: relative;">
+        <!-- 3D Crypto Animation -->
+        <div class="crypto-3d-container" style="position: absolute; top: 20px; right: 5%; width: 200px; height: 200px; perspective: 1000px; z-index: 1;">
+          <div class="crypto-3d-coin" style="position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: rotate3d 8s linear infinite;">
+            <!-- Front face -->
+            <div class="coin-face front" style="position: absolute; width: 100%; height: 100%; background: var(--gradient-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; box-shadow: var(--shadow-glow); border: 3px solid rgba(255, 255, 255, 0.2);">
+              <img src="assets/images/nktx.png" alt="NKTx" style="width: 80%; height: 80%; object-fit: contain; filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));">
+            </div>
+            <!-- Back face -->
+            <div class="coin-face back" style="position: absolute; width: 100%; height: 100%; background: var(--gradient-secondary); border-radius: 50%; display: flex; align-items: center; justify-content: center; backface-visibility: hidden; transform: rotateY(180deg); box-shadow: 0 0 24px rgba(53, 208, 224, 0.5); border: 3px solid rgba(255, 255, 255, 0.2);">
+              <div style="color: #000; font-size: 24px; font-weight: 800; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);">NKTx</div>
+            </div>
+            <!-- Edge -->
+            <div class="coin-edge" style="position: absolute; width: 100%; height: 100%; background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700); border-radius: 50%; transform: translateZ(-10px); box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);"></div>
+          </div>
+          
+          <!-- Floating particles around the coin -->
+          <div class="particle particle-1" style="position: absolute; width: 8px; height: 8px; background: var(--gradient-primary); border-radius: 50%; top: 20%; left: 10%; animation: float1 3s ease-in-out infinite;"></div>
+          <div class="particle particle-2" style="position: absolute; width: 6px; height: 6px; background: var(--gradient-secondary); border-radius: 50%; top: 60%; right: 15%; animation: float2 4s ease-in-out infinite;"></div>
+          <div class="particle particle-3" style="position: absolute; width: 10px; height: 10px; background: var(--gradient-accent); border-radius: 50%; bottom: 30%; left: 20%; animation: float3 5s ease-in-out infinite;"></div>
+          <div class="particle particle-4" style="position: absolute; width: 4px; height: 4px; background: linear-gradient(135deg, #1dff96, #35d0e0); border-radius: 50%; top: 40%; right: 5%; animation: float4 2.5s ease-in-out infinite;"></div>
+        </div>
+
+        <div class="hero-content" style="max-width: 800px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2;">
+          <div class="hero-badge" style="display: inline-block; background: var(--gradient-primary); color: #000; padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px;">
+            🚀 New DeFi Platform
+          </div>
+          <h1 class="hero-title" style="font-size: 48px; font-weight: 800; margin: 0 0 20px 0; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2;">
+            Nakamoto Capital Gov
+          </h1>
+          <p class="hero-subtitle" style="font-size: 20px; color: var(--text-secondary); margin: 0 0 40px 0; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
+            The most advanced DeFi platform for token swapping, decentralized governance and smart investments on the Solana blockchain.
+          </p>
+          <div class="hero-actions" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <button class="hero-btn primary" style="background: var(--gradient-primary); color: #000; border: none; padding: 16px 32px; border-radius: 16px; font-size: 16px; font-weight: 700; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px;">
+              🔄 Start Swap
+            </button>
+            <button class="hero-btn secondary" style="background: transparent; color: var(--text-primary); border: 2px solid var(--border-color); padding: 14px 30px; border-radius: 16px; font-size: 16px; font-weight: 600; cursor: pointer; transition: var(--transition);">
+              📄 View Whitepaper
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Grid -->
+      <section class="features-section" style="margin-bottom: 80px;">
+        <div class="features-header" style="text-align: center; margin-bottom: 60px;">
+          <h2 style="font-size: 36px; font-weight: 800; margin: 0 0 16px 0; background: var(--gradient-secondary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Key Features
+          </h2>
+          <p style="font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+            Discover the features that make NKTx the ideal choice for your DeFi investments
+          </p>
+        </div>
+        
+        <div class="features-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+          <!-- Feature 1 -->
+          <div class="feature-card gradient-card" style="padding: 32px; text-align: center; position: relative; overflow: hidden;">
+            <div class="feature-icon" style="width: 80px; height: 80px; background: var(--gradient-primary); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: var(--shadow-glow);">
+              🔄
+            </div>
+            <h3 style="font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--text-primary);">Instant Swap</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 16px;">
+              Swap tokens quickly and securely with competitive fees and optimized liquidity on the Solana network.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card gradient-card" style="padding: 32px; text-align: center; position: relative; overflow: hidden;">
+            <div class="feature-icon" style="width: 80px; height: 80px; background: var(--gradient-secondary); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: 0 0 24px rgba(53, 208, 224, 0.5);">
+              🏛️
+            </div>
+            <h3 style="font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--text-primary);">DAO Governance</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 16px;">
+              Participate in decentralized governance and vote on proposals that shape the platform's future.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card gradient-card" style="padding: 32px; text-align: center; position: relative; overflow: hidden;">
+            <div class="feature-icon" style="width: 80px; height: 80px; background: var(--gradient-accent); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: 0 0 24px rgba(255, 107, 107, 0.5);">
+              💎
+            </div>
+            <h3 style="font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--text-primary);">Staking Rewards</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 16px;">
+              Earn passive rewards by staking your NKTx tokens and contributing to network security.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="feature-card gradient-card" style="padding: 32px; text-align: center; position: relative; overflow: hidden;">
+            <div class="feature-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #1dff96, #35d0e0); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: 0 0 24px rgba(29, 255, 150, 0.5);">
+              🛡️
+            </div>
+            <h3 style="font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--text-primary);">Advanced Security</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 16px;">
+              Audited smart contracts and next-generation security protocols to protect your assets.
+            </p>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="feature-card gradient-card" style="padding: 32px; text-align: center; position: relative; overflow: hidden;">
+            <div class="feature-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #ffc527, #ff6b6b); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: 0 0 24px rgba(255, 197, 39, 0.5);">
+              📊
+            </div>
+            <h3 style="font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--text-primary);">Advanced Analytics</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 16px;">
+              Track your investment performance with real-time charts and detailed metrics.
+            </p>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="feature-card gradient-card" style="padding: 32px; text-align: center; position: relative; overflow: hidden;">
+            <div class="feature-icon" style="width: 80px; height: 80px; background: linear-gradient(135deg, #4ecdc4, #44a08d); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-size: 32px; box-shadow: 0 0 24px rgba(78, 205, 196, 0.5);">
+              🌐
+            </div>
+            <h3 style="font-size: 24px; font-weight: 700; margin: 0 0 16px 0; color: var(--text-primary);">Multi-Chain</h3>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin: 0; font-size: 16px;">
+              Support for multiple blockchains, starting with Solana and expanding to other networks.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Section -->
+      <section class="stats-showcase" style="margin-bottom: 80px;">
+        <div class="stats-container" style="max-width: 1200px; margin: 0 auto; padding: 0 24px;">
+          <div class="stats-header" style="text-align: center; margin-bottom: 48px;">
+            <h2 style="font-size: 36px; font-weight: 800; margin: 0 0 16px 0; background: var(--gradient-accent); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+              Impressive Numbers
+            </h2>
+            <p style="font-size: 18px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+              See the exponential growth of our platform
+            </p>
+          </div>
+          
+          <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+            <div class="stat-item gradient-card" style="padding: 32px; text-align: center; position: relative;">
+              <div class="stat-number" style="font-size: 48px; font-weight: 800; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">
+                $1.2M+
+              </div>
+              <div class="stat-label" style="font-size: 16px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                Total TVL
+              </div>
+            </div>
+            
+            <div class="stat-item gradient-card" style="padding: 32px; text-align: center; position: relative;">
+              <div class="stat-number" style="font-size: 48px; font-weight: 800; background: var(--gradient-secondary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">
+                700+
+              </div>
+              <div class="stat-label" style="font-size: 16px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                Active Users
+              </div>
+            </div>
+            
+            <div class="stat-item gradient-card" style="padding: 32px; text-align: center; position: relative;">
+              <div class="stat-number" style="font-size: 48px; font-weight: 800; background: var(--gradient-accent); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">
+                10M
+              </div>
+              <div class="stat-label" style="font-size: 16px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                Tokens NKTx
+              </div>
+            </div>
+            
+            <div class="stat-item gradient-card" style="padding: 32px; text-align: center; position: relative;">
+              <div class="stat-number" style="font-size: 48px; font-weight: 800; background: linear-gradient(135deg, #1dff96, #35d0e0); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px;">
+                24/7
+              </div>
+              <div class="stat-label" style="font-size: 16px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">
+                Operation
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="cta-section" style="text-align: center; padding: 80px 24px; background: rgba(255, 255, 255, 0.02); border-radius: 24px; margin: 0 24px 60px; border: 1px solid var(--border-color);">
+        <div class="cta-content" style="max-width: 600px; margin: 0 auto;">
+          <h2 style="font-size: 36px; font-weight: 800; margin: 0 0 20px 0; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Ready to Get Started?
+          </h2>
+          <p style="font-size: 18px; color: var(--text-secondary); margin: 0 0 40px 0; line-height: 1.6;">
+            Join the DeFi revolution and start swapping tokens safely and efficiently today.
+          </p>
+          <div class="cta-buttons" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <button class="cta-btn primary" style="background: var(--gradient-primary); color: #000; border: none; padding: 18px 36px; border-radius: 16px; font-size: 18px; font-weight: 700; cursor: pointer; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px;">
+              🚀 Start Now
+            </button>
+            <button class="cta-btn secondary" style="background: transparent; color: var(--text-primary); border: 2px solid var(--border-color); padding: 16px 34px; border-radius: 16px; font-size: 18px; font-weight: 600; cursor: pointer; transition: var(--transition);">
+              📚 Documentation
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Swap Tab -->
+    <div id="swap-tab" class="tab-content" style="display: none;">
+      <div class="swap-card" style="flex: 1 1 100%; max-width: 600px; margin: 0 auto;">
+        <div class="gradient-card border-card-border shadow" style="padding:32px; position: relative;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+            <h2 class="text-foreground" style="font-size:28px; font-weight:800; margin:0; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;"><img src="assets/images/nktx.png" alt="NKTX" style="width: 32px; height: 32px; margin-right: 12px; vertical-align: middle;"> Swap Tokens</h2>
+            <div style="display: flex; gap: 8px;">          
+            </div>
+          </div>
+
+          <div class="bg-warning/10 border-warning/20" style="border:1px solid var(--border-color); border-radius:12px; padding:16px; margin-bottom:24px; background: rgba(255, 215, 0, 0.1); backdrop-filter: blur(10px);">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-size: 16px;">💡</span>
+              <p style="margin:0; font-size:14px; color: var(--primary-color); font-weight: 500;">A fee of 0.3% is applied on every swap for liquidity providers</p>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <div class="bg-input/50" style="border:1px solid var(--border-color); border-radius:16px; padding:20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); transition: var(--transition);">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                <label style="font-size:13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="text-muted-foreground">💸 Sell</label>
+                <span style="font-size:12px; padding: 4px 8px; background: rgba(255, 255, 255, 0.1); border-radius: 6px;" class="text-muted-foreground">Balance: 0.00</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:16px;">
+                <input id="sellAmount" inputmode="decimal" placeholder="0.00" style="flex:1; background:transparent; border:0; outline:none; color:var(--text-primary); font-size:28px; font-weight:700; font-family: 'Inter', sans-serif;" />
+                <div style="position:relative;">
+                  <button type="button" id="sellToken" class="wallet-btn" style="white-space:nowrap; display:flex; align-items:center; gap:8px; padding: 12px 16px; border-radius: 12px; background: var(--gradient-secondary); color: #000; font-weight: 600;">
+                    <span id="sellTokenSymbol">ETH</span>
+                    <span style="font-size:12px;">▼</span>
+                  </button>
+                  <div id="sellTokenDropdown" style="display:none; position:absolute; top:100%; right:0; background:#1c243e; border:1px solid rgba(255, 215, 0, 0.3); border-radius:8px; padding:8px; min-width:120px; z-index:1000;">
+                    <div class="token-option" data-symbol="ETH" data-name="Ethereum" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">ETH</span>
+                      <span style="font-size:11px; color:#9db3e9;">Ethereum</span>
+                    </div>
+                    <div class="token-option" data-symbol="NKTx" data-name="Nakamoto Capital Gov" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">NKTx</span>
+                      <span style="font-size:11px; color:#9db3e9;">Nakamoto Capital Gov</span>
+                    </div>
+                    <div class="token-option" data-symbol="USDC" data-name="USD Coin" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">USDC</span>
+                      <span style="font-size:11px; color:#9db3e9;">USD Coin</span>
+                    </div>
+                    <div class="token-option" data-symbol="USDT" data-name="Tether USD" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">USDT</span>
+                      <span style="font-size:11px; color:#9db3e9;">Tether USD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; justify-content:center; margin: 8px 0;">
+              <button type="button" id="flipTokens" class="nav-button" style="border-radius:50%; background:var(--gradient-accent); border:none; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #000; font-weight: 700; box-shadow: var(--shadow-card); transition: var(--transition);">
+                🔄
+              </button>
+            </div>
+
+            <div class="bg-input/50" style="border:1px solid var(--border-color); border-radius:16px; padding:20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); transition: var(--transition);">
+              <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+                <label style="font-size:13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="text-muted-foreground">💰 Buy</label>
+                <span style="font-size:12px; padding: 4px 8px; background: rgba(255, 255, 255, 0.1); border-radius: 6px;" class="text-muted-foreground">Balance: 0.00</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:16px;">
+                <input id="buyAmount" inputmode="decimal" placeholder="0.00" style="flex:1; background:transparent; border:0; outline:none; color:var(--text-primary); font-size:28px; font-weight:700; font-family: 'Inter', sans-serif;" />
+                <div style="position:relative;">
+                  <button type="button" id="buyToken" class="wallet-btn" style="white-space:nowrap; display:flex; align-items:center; gap:8px; padding: 12px 16px; border-radius: 12px; background: var(--gradient-accent); color: #000; font-weight: 600;">
+                    <span id="buyTokenSymbol">USDC</span>
+                    <span style="font-size:12px;">▼</span>
+                  </button>
+                  <div id="buyTokenDropdown" style="display:none; position:absolute; top:100%; right:0; background:#1c243e; border:1px solid rgba(255, 215, 0, 0.3); border-radius:8px; padding:8px; min-width:120px; z-index:1000;">
+                    <div class="token-option" data-symbol="ETH" data-name="Ethereum" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">ETH</span>
+                      <span style="font-size:11px; color:#9db3e9;">Ethereum</span>
+                    </div>
+                    <div class="token-option" data-symbol="NKTx" data-name="Nakamoto Capital Gov" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">NKTx</span>
+                      <span style="font-size:11px; color:#9db3e9;">Nakamoto Capital Gov</span>
+                    </div>
+                    <div class="token-option" data-symbol="USDC" data-name="USD Coin" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">USDC</span>
+                      <span style="font-size:11px; color:#9db3e9;">USD Coin</span>
+                    </div>
+                    <div class="token-option" data-symbol="USDT" data-name="Tether USD" style="padding:8px; cursor:pointer; border-radius:4px; display:flex; align-items:center; gap:8px;">
+                      <span style="font-size:12px;">USDT</span>
+                      <span style="font-size:11px; color:#9db3e9;">Tether USD</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:24px;">
+            <button type="button" id="actionButton" class="gradient-primary glow-primary" style="width:100%; color:#000; font-weight:700; padding:16px 24px; border-radius:16px; border:0; font-size:16px; text-transform: uppercase; letter-spacing: 1px; position: relative; overflow: hidden; transition: var(--transition);">
+              <span style="position: relative; z-index: 2;">💼 Connect Wallet</span>
+            </button>
+          </div>
+
+          <div id="priceInfo" style="display:none; margin-top:20px; border-radius:16px; background:rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid var(--border-color); padding:20px;">
+            <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:12px;">
+              <span class="text-muted-foreground" style="font-weight: 500;">💱 Exchange Rate</span>
+              <span class="text-foreground" id="rateInfo" style="font-weight: 600;">1 ETH ≈ 2,341 USDC</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:12px;">
+              <span class="text-muted-foreground" style="font-weight: 500;">⛽ Network Fee</span>
+              <span class="text-foreground" style="font-weight: 600;">~$12.50</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; font-size:14px;">
+              <span class="text-muted-foreground" style="font-weight: 500;">💎 Platform Fee</span>
+              <span class="text-foreground" style="font-weight: 600;">0.3%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNCB Tab -->
+    <div id="uncb-tab" class="tab-content" style="display: none;">
+      <div class="swap-card" style="flex: 1 1 100%; max-width: 600px; margin: 0 auto;">
+        <div class="gradient-card border-card-border shadow" style="padding:32px; position: relative;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:24px;">
+            <h2 class="text-foreground" style="font-size:28px; font-weight:800; margin:0; background: var(--gradient-primary); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">$UNCB</h2>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <img src="../public/assets/images/bannerrr.jpg" alt="$UNCB" style="width:100%; border-radius:12px; object-fit:cover;">
+            <p class="text-muted-foreground" style="margin:0; line-height:1.6;">Faça parte do $UNCB — junte-se à nossa comunidade e acompanhe métricas, links e funcionalidades exclusivas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    Nakamoto Capital © 2025 — Swap NKTx now and join the DAO!
+    <div class="footer-links">
+      <a href="https://x.com/NKT_DAO" target="_blank">X</a>
+      <a href="https://discord.gg/YmeZCFbR3A" target="_blank">Discord</a>
+      <a href="https://t.me/+cbHnU7hQPPU1NDg0" target="_blank">Telegram</a>
+    </div>
+  </footer>
+
+  <!-- Wallet Modals (required for connectWallet.js) -->
+  <div class="modal fade" id="connectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background:#151515;color:#fff;border:1px solid rgba(255, 215, 0, 0.4)">
+        <div class="modal-header" style="border-bottom:1px solid rgba(255, 215, 0, 0.4)">
+          <h5 class="modal-title">Connect Wallet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Connect your MetaMask wallet to continue.</p>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid rgba(255, 215, 0, 0.4)">
+          <button type="button" class="btn btn-primary gittu-connect-btn">Connect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="disconnectModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="background:#151515;color:#fff;border:1px solid rgba(255, 215, 0, 0.4)">
+        <div class="modal-header" style="border-bottom:1px solid rgba(255, 215, 0, 0.4)">
+          <h5 class="modal-title">Disconnect Wallet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Do you want to disconnect your wallet?</p>
+        </div>
+        <div class="modal-footer" style="border-top:1px solid rgba(255, 215, 0, 0.4)">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger gittu-disconnect-btn">Disconnect</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/connectWallet.js"></script>
+  <script>
+    // Enhanced UI/UX JavaScript
+    
+    // Scroll effect for navigation
+    window.addEventListener('scroll', function() {
+      const nav = document.getElementById('siteNav');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Animate stats cards on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Apply animation to stats cards
+    document.addEventListener('DOMContentLoaded', function() {
+      const statsCards = document.querySelectorAll('.gradient-card');
+      statsCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'all 0.6s ease';
+        card.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(card);
+      });
+    });
+
+    // Enhanced tab switcher with animations
+    function showTab(name){
+      var homeTab = document.getElementById('home-tab');
+      var swapTab = document.getElementById('swap-tab');
+      var layoutTab = document.getElementById('layout-tab');
+      var uncbTab = document.getElementById('uncb-tab');
+      var navButtons = document.querySelectorAll('.nav-items .nav-button');
+      
+      // Hide all tabs first
+      if(homeTab) homeTab.style.display = 'none';
+      if(swapTab) swapTab.style.display = 'none';
+      if(layoutTab) layoutTab.style.display = 'none';
+      if(uncbTab) uncbTab.style.display = 'none';
+      
+      // Show selected tab with animation
+      if (name === 'home' && homeTab) {
+        homeTab.style.display = 'block';
+        homeTab.style.opacity = '0';
+        setTimeout(() => {
+          homeTab.style.opacity = '1';
+        }, 50);
+      } else if (name === 'swap' && swapTab) {
+        swapTab.style.display = 'block';
+        swapTab.style.opacity = '0';
+        setTimeout(() => {
+          swapTab.style.opacity = '1';
+        }, 50);
+      } else if (name === 'layout' && layoutTab) {
+        layoutTab.style.display = 'block';
+        layoutTab.style.opacity = '0';
+        setTimeout(() => {
+          layoutTab.style.opacity = '1';
+        }, 50);
+      } else if (name === 'uncb' && uncbTab) {
+        uncbTab.style.display = 'block';
+        uncbTab.style.opacity = '0';
+        setTimeout(() => {
+          uncbTab.style.opacity = '1';
+        }, 50);
+      }
+      
+      if(navButtons && navButtons.length){
+        navButtons.forEach(function(btn){ 
+          btn.classList.remove('active');
+          btn.style.transform = 'translateY(0)';
+        });
+        var activeBtn = document.querySelector('.nav-items .nav-button[onclick="showTab(\''+name+'\')"]');
+        if(activeBtn){ 
+          activeBtn.classList.add('active');
+          activeBtn.style.transform = 'translateY(-2px)';
+        }
+      }
+    }
+
+    // Add hover effects to buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.solscan-button, .whitepaper-button');
+      buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px) scale(1.05)';
+        });
+        button.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0) scale(1)';
+        });
+      });
+    });
+
+    // Token prices cache
+    let tokenPrices = {
+      NKTx: 0,
+      ETH: 0,
+      USDC: 1,
+      USDT: 1
+    };
+
+    async function updateTokenData() {
+      try {
+        // Fetch NKTx price
+        const nktxResponse = await fetch("https://public-api.birdeye.so/defi/price?address=nktxHBwMUTBPJJtr8Z8mcbS4m6zCeEDVuDRHfMAWmWB&ui_amount_mode=raw", {
+          headers: {
+            "X-API-KEY": "249da5373f5143778fb38423a65b6e7c",
+            "x-chain": "solana"
+          }
+        });
+        const nktxData = await nktxResponse.json();
+        if (nktxData?.data) {
+          tokenPrices.NKTx = parseFloat(nktxData.data.value);
+          const price = tokenPrices.NKTx.toFixed(5);
+          document.getElementById("token-price").textContent = `$${price}`;
+        }
+
+        // Fetch ETH price (using CoinGecko API)
+        try {
+          const ethResponse = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd");
+          const ethData = await ethResponse.json();
+          if (ethData?.ethereum?.usd) {
+            tokenPrices.ETH = ethData.ethereum.usd;
+          }
+        } catch (e) {
+          console.log("ETH price fetch failed, using fallback");
+          tokenPrices.ETH = 2400; // Fallback price
+        }
+
+      } catch (error) {
+        console.error("Failed to fetch token data:", error);
+        // Use fallback prices
+        tokenPrices.NKTx = 0.0005;
+        tokenPrices.ETH = 2400;
+      }
+    }
+
+    updateTokenData();
+    setInterval(updateTokenData, 600000);
+  
+    // Swap UI script
+    (function(){
+      const sellInput = document.getElementById('sellAmount');
+      const buyInput = document.getElementById('buyAmount');
+      const flipBtn = document.getElementById('flipTokens');
+      const actionBtn = document.getElementById('actionButton');
+      const priceInfo = document.getElementById('priceInfo');
+      
+      // Token selection elements
+      const sellTokenBtn = document.getElementById('sellToken');
+      const buyTokenBtn = document.getElementById('buyToken');
+      const sellTokenDropdown = document.getElementById('sellTokenDropdown');
+      const buyTokenDropdown = document.getElementById('buyTokenDropdown');
+      const sellTokenSymbol = document.getElementById('sellTokenSymbol');
+      const buyTokenSymbol = document.getElementById('buyTokenSymbol');
+
+      function isConnected(){
+        return sessionStorage.getItem('selectedAccount') !== null;
+      }
+
+      function refreshAction(){
+        if(!isConnected()){
+          actionBtn.textContent = 'Connect Wallet';
+          actionBtn.className = 'gradient-primary glow-primary';
+          actionBtn.style.cssText = 'width:100%; color:#000; font-weight:600; padding:12px 16px; border-radius:10px; border:0;';
+          actionBtn.disabled = false;
+        } else {
+          actionBtn.textContent = 'Swap';
+          actionBtn.className = 'bg-success text-success-foreground glow-success';
+          actionBtn.style.cssText = 'width:100%; font-weight:600; padding:12px 16px; border-radius:10px; border:0;';
+          const disabled = !(sellInput.value && buyInput.value);
+          actionBtn.disabled = disabled;
+          actionBtn.style.opacity = disabled ? '0.6' : '1';
+          actionBtn.style.cursor = disabled ? 'not-allowed' : 'pointer';
+        }
+      }
+
+      function calculateConversion(sellAmount, sellToken, buyToken) {
+        if (!sellAmount || sellAmount <= 0) return 0;
+        
+        const sellPrice = tokenPrices[sellToken] || 0;
+        const buyPrice = tokenPrices[buyToken] || 0;
+        
+        if (sellPrice === 0 || buyPrice === 0) return 0;
+        
+        // Convert to USD first, then to target token
+        const usdValue = sellAmount * sellPrice;
+        const convertedAmount = usdValue / buyPrice;
+        
+        return convertedAmount;
+      }
+
+      function updatePriceInfo(){
+        const show = !!(sellInput.value && buyInput.value);
+        priceInfo.style.display = show ? 'block' : 'none';
+        
+        if (show) {
+          const sellToken = sellTokenSymbol.textContent;
+          const buyToken = buyTokenSymbol.textContent;
+          const rateInfo = document.getElementById('rateInfo');
+          
+          // Calculate real-time conversion rate
+          const sellPrice = tokenPrices[sellToken] || 0;
+          const buyPrice = tokenPrices[buyToken] || 0;
+          
+          if (sellPrice > 0 && buyPrice > 0) {
+            const rate = sellPrice / buyPrice;
+            if (rate >= 1) {
+              rateInfo.textContent = `1 ${sellToken} ≈ ${rate.toFixed(2)} ${buyToken}`;
+            } else {
+              rateInfo.textContent = `1 ${sellToken} ≈ ${rate.toFixed(6)} ${buyToken}`;
+            }
+          } else {
+            // Fallback rates
+            if (sellToken === 'NKTx' && buyToken === 'USDC') {
+              rateInfo.textContent = '1 NKTx ≈ 0.0005 USDC';
+            } else if (sellToken === 'ETH' && buyToken === 'USDC') {
+              rateInfo.textContent = '1 ETH ≈ 2,341 USDC';
+            } else if (sellToken === 'NKTx' && buyToken === 'ETH') {
+              rateInfo.textContent = '1 NKTx ≈ 0.0000002 ETH';
+            } else if (sellToken === 'USDC' && buyToken === 'NKTx') {
+              rateInfo.textContent = '1 USDC ≈ 2,000 NKTx';
+            } else {
+              rateInfo.textContent = `1 ${sellToken} ≈ 1.0 ${buyToken}`;
+            }
+          }
+        }
+      }
+
+      // Token selection functions
+      function toggleDropdown(dropdown, otherDropdown) {
+        if (otherDropdown.style.display === 'block') {
+          otherDropdown.style.display = 'none';
+        }
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+      }
+
+      function selectToken(symbol, name, isSell) {
+        if (isSell) {
+          sellTokenSymbol.textContent = symbol;
+          sellTokenDropdown.style.display = 'none';
+        } else {
+          buyTokenSymbol.textContent = symbol;
+          buyTokenDropdown.style.display = 'none';
+        }
+        
+        // Recalculate conversion if there's an amount entered
+        const sellAmount = parseFloat(sellInput.value) || 0;
+        const buyAmount = parseFloat(buyInput.value) || 0;
+        
+        if (sellAmount > 0) {
+          const sellToken = sellTokenSymbol.textContent;
+          const buyToken = buyTokenSymbol.textContent;
+          const convertedAmount = calculateConversion(sellAmount, sellToken, buyToken);
+          if (convertedAmount > 0) {
+            buyInput.value = convertedAmount.toFixed(6);
+          }
+        } else if (buyAmount > 0) {
+          const sellToken = sellTokenSymbol.textContent;
+          const buyToken = buyTokenSymbol.textContent;
+          const convertedAmount = calculateConversion(buyAmount, buyToken, sellToken);
+          if (convertedAmount > 0) {
+            sellInput.value = convertedAmount.toFixed(6);
+          }
+        }
+        
+        // Update price info with new token pair
+        updatePriceInfo();
+        refreshAction();
+      }
+
+      function closeAllDropdowns() {
+        sellTokenDropdown.style.display = 'none';
+        buyTokenDropdown.style.display = 'none';
+      }
+
+      if(sellInput && buyInput && flipBtn && actionBtn){
+        sellInput.addEventListener('input', ()=>{
+          const sellAmount = parseFloat(sellInput.value) || 0;
+          const sellToken = sellTokenSymbol.textContent;
+          const buyToken = buyTokenSymbol.textContent;
+          
+          if (sellAmount > 0) {
+            const convertedAmount = calculateConversion(sellAmount, sellToken, buyToken);
+            if (convertedAmount > 0) {
+              buyInput.value = convertedAmount.toFixed(6);
+            }
+          } else {
+            buyInput.value = '';
+          }
+          
+          updatePriceInfo(); 
+          refreshAction(); 
+        });
+        
+        buyInput.addEventListener('input', ()=>{
+          const buyAmount = parseFloat(buyInput.value) || 0;
+          const sellToken = sellTokenSymbol.textContent;
+          const buyToken = buyTokenSymbol.textContent;
+          
+          if (buyAmount > 0) {
+            const convertedAmount = calculateConversion(buyAmount, buyToken, sellToken);
+            if (convertedAmount > 0) {
+              sellInput.value = convertedAmount.toFixed(6);
+            }
+          } else {
+            sellInput.value = '';
+          }
+          
+          updatePriceInfo(); 
+          refreshAction(); 
+        });
+        flipBtn.addEventListener('click', ()=>{
+          const s = sellInput.value;
+          const sellToken = sellTokenSymbol.textContent;
+          sellInput.value = buyInput.value;
+          buyInput.value = s;
+          sellTokenSymbol.textContent = buyTokenSymbol.textContent;
+          buyTokenSymbol.textContent = sellToken;
+          updatePriceInfo();
+          refreshAction();
+        });
+
+        // Token selection event listeners
+        if (sellTokenBtn && sellTokenDropdown) {
+          sellTokenBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(sellTokenDropdown, buyTokenDropdown);
+          });
+        }
+
+        if (buyTokenBtn && buyTokenDropdown) {
+          buyTokenBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleDropdown(buyTokenDropdown, sellTokenDropdown);
+          });
+        }
+
+        // Token option selection
+        document.querySelectorAll('#sellTokenDropdown .token-option').forEach(option => {
+          option.addEventListener('click', () => {
+            const symbol = option.dataset.symbol;
+            const name = option.dataset.name;
+            selectToken(symbol, name, true);
+          });
+        });
+
+        document.querySelectorAll('#buyTokenDropdown .token-option').forEach(option => {
+          option.addEventListener('click', () => {
+            const symbol = option.dataset.symbol;
+            const name = option.dataset.name;
+            selectToken(symbol, name, false);
+          });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', closeAllDropdowns);
+
+        actionBtn.addEventListener('click', ()=>{
+          if(!isConnected()){
+            // Open connect modal (handled by connectWallet.js)
+            const connectModalEl = document.getElementById('connectModal');
+            if (connectModalEl && window.bootstrap) {
+              const m = new bootstrap.Modal(connectModalEl);
+              m.show();
+            }
+          } else {
+            console.log('Swap initiated');
+          }
+        });
+
+        // React to wallet connection changes
+        window.addEventListener('storage', refreshAction);
+        document.addEventListener('visibilitychange', refreshAction);
+        setInterval(refreshAction, 1500);
+
+        refreshAction();
+        updatePriceInfo();
+      }
+    })();
+
+    // Layout tab functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Hero section buttons
+      const heroSwapBtn = document.querySelector('.hero-btn.primary');
+      const heroWhitepaperBtn = document.querySelector('.hero-btn.secondary');
+      
+      if (heroSwapBtn) {
+        heroSwapBtn.addEventListener('click', function() {
+          showTab('swap');
+        });
+      }
+      
+      if (heroWhitepaperBtn) {
+        heroWhitepaperBtn.addEventListener('click', function() {
+          window.open('https://whitepaper.nakamotocapital.fund/', '_blank');
+        });
+      }
+
+      // CTA section buttons
+      const ctaStartBtn = document.querySelector('.cta-btn.primary');
+      const ctaDocsBtn = document.querySelector('.cta-btn.secondary');
+      
+      if (ctaStartBtn) {
+        ctaStartBtn.addEventListener('click', function() {
+          showTab('swap');
+        });
+      }
+      
+      if (ctaDocsBtn) {
+        ctaDocsBtn.addEventListener('click', function() {
+          window.open('https://whitepaper.nakamotocapital.fund/', '_blank');
+        });
+      }
+
+      // Add animation to layout elements when tab is shown
+      const layoutTab = document.getElementById('layout-tab');
+      if (layoutTab) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, { threshold: 0.1 });
+
+        // Observe feature cards
+        const featureCards = layoutTab.querySelectorAll('.feature-card');
+        featureCards.forEach((card, index) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(30px)';
+          card.style.transition = 'all 0.6s ease';
+          card.style.transitionDelay = `${index * 0.1}s`;
+          observer.observe(card);
+        });
+
+        // Observe stat items
+        const statItems = layoutTab.querySelectorAll('.stat-item');
+        statItems.forEach((item, index) => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(30px)';
+          item.style.transition = 'all 0.6s ease';
+          item.style.transitionDelay = `${index * 0.1}s`;
+          observer.observe(item);
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
